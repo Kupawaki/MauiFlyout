@@ -4,11 +4,54 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:MauiFlyout"
-    Shell.FlyoutBehavior="Disabled">
+    Shell.FlyoutBehavior="Flyout">
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+    
+    
+    <Shell.ItemTemplate>
+        <DataTemplate>
+            <HorizontalStackLayout BackgroundColor="LightGreen">
+                <ImageButton Source="{Binding FlyoutIcon}" 
+                             HeightRequest="35"
+                             WidthRequest="35"
+                             Margin="10"/>
+                <Label Text="{Binding Title}"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       FontSize="Body"/>    
+            </HorizontalStackLayout>
+        </DataTemplate>
+    </Shell.ItemTemplate>
+
+    <!--Flyout Header-->
+    <Shell.FlyoutHeader>
+        <HorizontalStackLayout BackgroundColor="DarkGray">
+            <Image Source="dotnet_bot.png" HeightRequest="50" WidthRequest="50" Margin="10,10,10,10"/>
+            <Label VerticalOptions="Center" Text="Flyout Header" FontSize="Large"/>
+        </HorizontalStackLayout>
+    </Shell.FlyoutHeader>
+
+    <!--Flyout Content-->
+    <ShellContent Title="Home"
+                  Icon="dotnet_bot.png"
+                  ContentTemplate="{DataTemplate local:MainPage}" />
+
+
+    <ShellContent Title="Thing"
+                  Icon="dotnet_bot.png"
+                  ContentTemplate="{DataTemplate local:MainPage}" />
+
+
+    <!--Flyout Footer-->
+    <Shell.FlyoutFooter>
+        <Label Text="Copyright | You No Can Steal"
+               FontAttributes="Bold"
+               FontSize="Small"
+               BackgroundColor="AliceBlue"
+               HorizontalTextAlignment="Center"
+               VerticalTextAlignment="Center"
+               Padding="0,10"/>
+    </Shell.FlyoutFooter>
+
 
 </Shell>
